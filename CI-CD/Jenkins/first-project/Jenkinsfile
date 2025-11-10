@@ -27,9 +27,15 @@ pipeline {
         stage('Test'){
             steps{
                 dir('CI-CD/Jenkins/first-project'){
-                    sh 'echo "Test stage"'
+                    sh '''
+                        echo "Test stage"
+                    '''
                 }
-                
+                dir('CI-CD/Jenkins/first-project/build'){
+                    sh '''
+                        test -f index.html
+                    '''
+                }
             }
         }
     }
