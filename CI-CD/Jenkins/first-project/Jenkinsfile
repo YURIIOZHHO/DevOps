@@ -1,14 +1,14 @@
 pipeline {
-    agent any
+    
+    agent {
+        docker {
+            image 'node:18-alpine'
+        }
+    }
 
     stages {
         stage('Build'){
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
+            
             steps {
                 dir('CI-CD/Jenkins/first-project'){
                     sh '''
@@ -27,19 +27,15 @@ pipeline {
         stage('Test'){
             steps{
                 dir('CI-CD/Jenkins/first-project'){
-                    sh '''
-                        echo "Test stage"
-                    '''
+                    sh 'echo "Test stage"'
                 }
+
                 dir('CI-CD/Jenkins/first-project/build'){
-                    sh '''
-                        test -f index.html
-                    '''
+                    sh 'test -f index.html'
                 }
+
                 dir('CI-CD/Jenkins/first-project'){
-                    sh '''
-                        npm test
-                    '''
+                    sh 'npm test'
                 }
             }
         }
