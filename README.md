@@ -20,3 +20,12 @@ The purpose of this repository is to showcase my skills and experiments in:
 
 ### Cloud Services
 - Deploying and managing workloads on AWS.
+
+### NGINX
+- Configured NGINX as a reverse proxy for web applications.
+- Set up load balancing for multiple backend servers.
+- Implemented SSL/TLS certificates with Let's Encrypt.
+- Optimized performance with caching and compression.
+- Wrote Docker configurations for running NGINX in containers.
+  
+🔗 [LinkedIn](www.linkedin.com/in/yurii-ozhho-532071286)
