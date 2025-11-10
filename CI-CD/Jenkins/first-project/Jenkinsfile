@@ -26,7 +26,10 @@ pipeline {
 
         stage('Test'){
             steps{
-                sh 'echo "Test stage"'
+                dir('CI-CD/Jenkins/first-project'){
+                    sh 'echo "Test stage"'
+                }
+                
             }
         }
     }
