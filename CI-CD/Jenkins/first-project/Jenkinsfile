@@ -34,6 +34,7 @@ pipeline {
                 dir('CI-CD/Jenkins/first-project/build'){
                     sh '''
                         test -f index.html
+                        npt test
                     '''
                 }
             }
