@@ -1,0 +1,36 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx-server/Dockerfile
+    container_name: nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+    
+  backend1:
+    build:
+      context: ./backend1
+      dockerfile: Dockerfile.backend
+    container_name: backend1
+    ports:
+      - "5001:5001"
+  backend2:
+    build:
+      context: ./backend2
+      dockerfile: Dockerfile.backend
+    container_name: backend2
+    ports:
+      - "5002:5002"
+  backend3:
+    build:
+      context: ./backend3
+      dockerfile: Dockerfile.backend
+    container_name: backend3
+    ports:
+      - "5003:5003"
+        
+    
