@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Static Content & NGINX Reverse Proxy</title>
+</head>
+<body>
+    <header>
+        <div class="header-div">
+            <div>
+                <img width="220px" height="130px" src="what-is-nginx-1024x512.png"> 
+            </div>
+            
+            <div>
+                <h1>Static Content & NGINX Reverse Proxy</h1>
+            </div>
+            
+        </div>
+        
+    </header>
+    <main>
+        <div class="main-div">
+            <div>
+    <button class="btn">
+            Click to change inf
+        </button>
+            </div>
+    
+        <div class="share-div">
+            <div class="static-file">
+                Static content refers to files that do not change in response to user requests. These files are delivered to the client exactly as they are stored on the server. Common examples include:
+                    HTML files,
+                    CSS files,
+                    JavaScript files,
+                    Images (JPEG, PNG, GIF),
+                    Videos.
+                    Since static files don’t require server-side processing, they can be served much more quickly than dynamic content generated in real-time.
+            </div>
+            <div class="reverse-proxy" style="display: none;">
+                NGINX can be configured to function as a reverse proxy. A reverse proxy acts as an intermediary server that sits in front of one or more backend servers and forwards client requests to them. It then receives the responses from the backend servers and delivers them back to the client.
+            </div>  
+            </div>
+        </div>
+     
+        
+    </main>
+    <footer>
+
+    </footer>
+    
+
+<script src="main.js"></script>
+</body>
+</html>
