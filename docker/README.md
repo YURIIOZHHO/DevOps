@@ -27,7 +27,7 @@
 ### 4. Setup and Launch SonarQube
 - Another VM is prepared with SonarQube and its dependencies installed.
 - Code analysis is performed successfully.  
-![SonarQube Setup](https://github.com/user-attachments/assets/47462797-f203-461c-b8a4-e9bcb6e0f917)
+![SonarQube Setup](https://github.com/user-attachments/assets/1ae5b2f1-8487-45dc-8c71-6f482ccf26ae)  
 ![SonarQube Result](https://github.com/user-attachments/assets/a2efd6c6-75a0-4f3b-9896-354826d32cea)
 
 ### 5. Access Results via Web
