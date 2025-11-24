@@ -14,15 +14,15 @@
 ### 1. Create VM and Clone Code
 - A virtual machine is created in AWS.
 - Java code is cloned from the repository.  
-![Code Retrieval](https://github.com/user-attachments/assets/c39597c1-4cc9-48cf-b5ad-9ef3b908dd57")
+![Code Retrieval](https://github.com/user-attachments/assets/c39597c1-4cc9-48cf-b5ad-9ef3b908dd57)
 
 ### 2. Install Dependencies
 - Required packages and dependencies for the source code are installed.  
-![Install Dependencies]("https://github.com/user-attachments/assets/9396bbd2-ec0b-4f6f-af36-aa1400627920")
+![Install Dependencies](https://github.com/user-attachments/assets/9396bbd2-ec0b-4f6f-af36-aa1400627920)
 
 ### 3. Build the Project
 - Project is built and a `.war` file is generated.   
-![Build Project]("https://github.com/user-attachments/assets/127273e6-3f64-4402-bfd3-9c33bbbc785d")
+![Build Project](https://github.com/user-attachments/assets/127273e6-3f64-4402-bfd3-9c33bbbc785d)
 
 ### 4. Setup and Launch SonarQube
 - Another VM is prepared with SonarQube and its dependencies installed.
