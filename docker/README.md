@@ -5,7 +5,7 @@
 - Bit Bucket
 - Jenkins
 - SonarQube
-- Jfrog
+- Apache Archiva
 - Ansible
 - Docker
 - Kubernetes
@@ -33,3 +33,16 @@
 ### 5. Access Results via Web
 - Analysis results are available via the web interface on port 9000.  
 ![Web Interface](https://github.com/user-attachments/assets/c8de1e64-660a-4e8f-90e2-765d2c60086c)
+
+### 6. Apache Archiva
+- Create new VM, pull xetusoss/archiva image from docker hub and start container.
+- Upload `.war` on artifact repository.
+![Result of successful upload `.war`](https://github.com/user-attachments/assets/2ecb96d1-7c35-4a6b-bfba-7e2632017bbb)
+
+
+### 7. Apache Tomcat
+- Create new VM, pull tomcat image from docker hub and start container.
+![Result of successful deployment `.war`](https://github.com/user-attachments/assets/09aa3d2a-b29e-46d2-b088-7862f8a91192)
+
+
+
