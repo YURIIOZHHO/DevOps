@@ -91,5 +91,5 @@
 
 ![Process of performing Ansible tasks](https://github.com/user-attachments/assets/d2493117-c573-4d3c-b114-0f0e30242761)
 
-![Result successful delivery image to Docker Hub](https://github.com/user-attachments/assets/6204b81c-e67d-48fe-8ce8-7f16eb4b32a9")
+![Result successful delivery image to Docker Hub](https://github.com/user-attachments/assets/6204b81c-e67d-48fe-8ce8-7f16eb4b32a9)
 
