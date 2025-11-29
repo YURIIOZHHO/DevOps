@@ -1,0 +1,87 @@
+---
+- name: Automate Nginx + HTTPS (Let’s Encrypt) on Amazon Linux 2023(EC2)
+  hosts: webserver
+  become: yes
+  vars_files:
+    - vars.yaml
+    - vault.yaml
+
+  tasks:
+    - name: Update all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
+    - name: Install Nginx and Certbot
+      dnf:
+        name:
+          - nginx
+          - certbot
+        state: latest
+
+    - name: Ensure Nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Create webroot directory for the domain
+      file:
+        path: "/usr/share/nginx/html/{{ domain }}"
+        state: directory
+        owner: nginx
+        group: nginx
+        mode: "0755"
+
+    - name: Deploy test index.html
+      copy:
+        src: files/index.html
+        dest: "/usr/share/nginx/html/{{ domain }}/index.html"
+        owner: nginx
+        group: nginx
+        mode: "0644"
+
+    - name: Obtain Let's Encrypt certificate via HTTP-01
+      command: >
+        certbot certonly --non-interactive --agree-tos
+        --email {{ duckdns_account }}
+        --webroot -w /usr/share/nginx/html
+        -d {{ domain }}
+      args:
+        creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
+
+    - name: Configure Nginx for HTTPS
+      template:
+        src: templates/nginx.conf.j2
+        dest: "/etc/nginx/conf.d/{{ domain }}.conf"
+        owner: root
+        group: root
+        mode: "0644"
+      notify: reload nginx
+
+    - name: Reload Nginx to apply new config
+      service:
+        name: nginx
+        state: reloaded
+
+
+    - name: Test server functionality (HTTPS request)
+      uri:
+        url: "https://{{ domain }}"
+        method: GET
+        validate_certs: yes
+        status_code: 200
+        return_content: yes
+      delegate_to: localhost
+      register: http_check
+
+    - name: Display test result
+      ansible.builtin.debug:
+        msg: "Successfully received response (Status: {{ http_check.status }}). First 100 chars of content: {{ http_check.content[:100] }}"
+
+  handlers:
+    - name: reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
