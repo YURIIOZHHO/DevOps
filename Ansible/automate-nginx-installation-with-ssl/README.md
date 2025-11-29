@@ -75,11 +75,11 @@ port=8080
 #### Nginx successfully responding on HTTP:
 !["Nginx successfully responding on HTTP"](https://github.com/user-attachments/assets/90905afc-3960-4a37-bfa5-0f241f0022c0)
 
-#### Full playbook with SSL (Let's encrypt)
+### Full playbook with SSL (Let's encrypt)
 #### After verifying that HTTP works, I proceeded to configure HTTPS using Certbot.
-### All variable values such as ```domain``` and ```duckdns_account``` are stored in ```vars.yaml``` and ```vault.yaml```
+#### All variable values such as ```domain``` and ```duckdns_account``` are stored in ```vars.yaml``` and ```vault.yaml```
 
-Final ```playbook.yaml```
+Final ```playbook.yaml:```
 ```yaml
 ---
 - name: Automate Nginx + HTTPS (Let’s Encrypt) on Amazon Linux 2023(EC2)
