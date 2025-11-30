@@ -1,0 +1,189 @@
+
+                Time of checking: ${date}
+                Status of process: ${status}
+                Service was restarted? Yes/No: ${exec_restart}
+                   
+                Time of checking: $<built-in function time>
+                Status of process: $active
+                Service was restarted? Yes/No: $No
+                   
+                Time of checking: Sun Nov 30 13:35:11 2025
+                Status of process: active
+                Service was restarted? Yes/No: No
+                   
+                Time of checking: Sun Nov 30 13:35:19 2025
+                Status of process: active
+                Service was restarted? Yes/No: No
+                   
+                Time of checking: Sun Nov 30 13:36:02 2025
+                Status of process: active
+                Service was restarted? Yes/No: No
+                   
+        Time of checking: Sun Nov 30 13:36:47 2025
+        Status of process: active
+        Service was restarted? Yes/No: No
+                   
+        Time of checking: Sun Nov 30 13:37:03 2025
+        Status of process: active
+        Service was restarted? Yes/No: No
+                   
+Time of checking: Sun Nov 30 13:37:21 2025
+Status of process: active
+Service was restarted? Yes/No: No
+                   
+Time of checking: 2025-11-30 15:50:39
+Status of process: active
+Service was restarted? Yes/No: No
+                   
+Time of checking: 2025-11-30 16:15:46
+Status of process: Active
+Service was restarted? Yes/No: No
+                   
+Time of checking: 2025-11-30 16:16:56
+Status of process: Active
+Service was restarted? Yes/No: No
+                   
+Time of checking: 2025-11-30 16:17:26
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+                   
+Time of checking: 2025-11-30 16:34:22
+Status of process: Active
+Service was restarted? Yes/No: No
+                   
+Time of checking: 2025-11-30 16:35:02
+Status of process: Active
+Service was restarted? Yes/No: No
+Time of checking: 2025-11-30 16:35:32
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 16:36:49
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 16:36:53
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 16:37:20
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 16:39:00
+Status of process: Inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 16:39:50
+Status of process: Inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 16:41:05
+Status of process: Inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 16:43:38
+Status of process: Inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 17:03:00
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:03:30
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:03:37
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:03:44
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:04:14
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:04:24
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:04:39
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:05:42
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:07:28
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:14:14
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:16:07
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:17:02
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:27:06
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 17:49:16
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 17:54:58
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 18:33:49
+Status of process: Active
+Service was restarted? Yes/No: No
+
+
+Time of checking: 2025-11-30 18:34:00
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 18:35:09
+Status of process: Active | Service was inactive
+Service was restarted? Yes/No: Yes
+
+
+Time of checking: 2025-11-30 18:36:12
+Status of process: Inactive | nginx is not installed
+Service was restarted? Yes/No: No
