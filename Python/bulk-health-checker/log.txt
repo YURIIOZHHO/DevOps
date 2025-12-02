@@ -1,0 +1,105 @@
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.003413s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fcb6ce26970>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001922s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.003175s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8750a5a970>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001902s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.00388s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2fbf42d970>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001965s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.00333s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fcaa6e209a0>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001886s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.003516s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f58f06149a0>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001841s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.003621s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fab09db99a0>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001978s
+Client error
+
+
+URL: http://172.31.29.192:80
+Status code: 200
+Responce time: 0.004283s
+Service successfully working
+
+
+ERROR connecting to http://172.31.30.192:8080: HTTPConnectionPool(host='172.31.30.192', port=8080): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2c124dda60>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+
+URL: http://172.31.29.192:80/not-existing-path
+Status code: 404
+Responce time: 0.001957s
+Client error
+
