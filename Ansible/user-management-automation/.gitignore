@@ -1,0 +1,3 @@
+**vm-key.pem
+**inventory/group_vars/dev/vault.yaml
+**inventory/group_vars/production/vault.yaml

@@ -1,0 +1,46 @@
+---
+
+- name: Setup production users, groups and directory
+  hosts: production
+  become: true
+
+  vars_files:
+    - inventory/group_files/production/users.yaml
+    - inventory/group_files/production/vault.yaml
+
+  tasks:
+    - name: Ensure groups exist
+      group:
+          name: "{{ item }}"
+          state: present
+      loop:
+       - prod
+       - admins
+       - developers
+
+    - name: Ensure users exist
+      user:
+        name: "{{ item.name  }}"
+        group: "{{ item.group }}"
+        groups: "{{ item.groups | join(',')  }}"
+        append: true
+        shell: /bin/bash
+        create_home: true
+        home: "/home/{{ item.name  }}"
+        state: present
+        password: "{{ item.password  }}"
+      loop: "{{ users  }}"
+
+
+    - name: Ensure project directory
+      file:
+        path: "{{ item.path  }}"
+        state: directory
+        owner: "{{ item.owner | default('root') }}"
+        group: "{{ item.group  }}"
+        mode: "{{ item.mode  }}"
+
+      loop:
+        - { path: "/production-app/app", group: "prod", mode: "0770" }
+
+

@@ -1,0 +1,11 @@
+---
+users:
+  - name: prod-admin
+    group: admins
+    groups: ["prod, admins "]
+    password: "{{ prod_admin_password  }}"
+
+  - name: techlead
+    group: developers
+    groups: ["prod, developers"]
+    password: "{{ techlead_password  }}"

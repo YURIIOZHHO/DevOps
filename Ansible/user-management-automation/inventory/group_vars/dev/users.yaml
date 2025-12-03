@@ -1,0 +1,18 @@
+users:
+  - name: techlead
+    groups: ["developers", "dev"]
+    password: "{{ techlead_password }}"
+
+  - name: dev1
+    groups: ["developers", "dev"]
+    password: "{{ dev1_password }}"
+
+  - name: tester
+    groups: ["testers", "dev"]
+    password: "{{ tester_password  }}"
+
+  - name: admin
+    groups: ["admins, dev, wheel"]
+    password: "{{ admin_password  }}"
+
+
