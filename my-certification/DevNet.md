@@ -1,0 +1,1 @@
+<img width="2584" height="1750" alt="_certificate_ki231_oyua-student-ztu-edu-ua_bdbcd955-cbb3-48d3-a52c-e9093ea13f93-1" src="https://github.com/user-attachments/assets/20cfc214-9233-4d9e-9aa1-6f9e46e074fb" />
