@@ -40,14 +40,23 @@ pipeline {
                  dir(APP_DIR){
                         sh'''#!/bin/bash
                         source venv/bin/activate
-                        python3 app.py &
-                        PID=$!
-                        wait $PID
+                        python3 app.py
+                        '''
+                 }
+            }
+        }
+
+         stage('Archive') {
+            steps{
+                 dir(APP_DIR){
+                        sh'''#!/bin/bash
                         tar -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
                         '''
                  }
             }
         }
+
+        
 
         stage('Trigger Nighlty Backup'){
             steps {
