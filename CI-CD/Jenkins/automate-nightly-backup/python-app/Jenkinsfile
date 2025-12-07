@@ -50,7 +50,7 @@ pipeline {
             steps{
                  dir(APP_DIR){
                         sh'''#!/bin/bash
-                        tar -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
+                        tar --exclude='build-*.tar.gz' -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
                         '''
                  }
             }
