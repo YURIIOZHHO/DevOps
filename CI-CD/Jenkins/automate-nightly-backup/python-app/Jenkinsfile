@@ -18,7 +18,7 @@ pipeline{
         stage('Install dependincies') {
             steps{
                 sh '''
-		#!/bin/bash/env bash
+		#!/bin/bash
                 python3 -m venv venv
                 source venv/bin/activate
                 pip install --upgrade pip
@@ -31,7 +31,7 @@ pipeline{
         stage('Test') {
             steps{
                 sh'''
-		#!/bin/bash/env bash
+		#!/bin/bash
                 source venv/bin/activate
                 python3 tests/test.py
                 '''
@@ -41,7 +41,7 @@ pipeline{
         stage('Build') {
             steps{
                 sh'''
-		#!/bin/bash/env bash
+		#!/bin/bash
                 source venv/bin/activate
                 python3 app.py
                 '''
