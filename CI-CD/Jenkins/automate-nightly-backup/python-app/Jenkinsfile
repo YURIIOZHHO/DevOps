@@ -1,44 +1,52 @@
-dir('CI-CD/Jenkins/automate-nightly-backup/python-app'){
-    pipeline {
-        agent {
-            docker { image 'python:3.10' }
-        }
-
-        stages{
-                
-            stage('Install dependincies') {
-                steps{
-                    sh '''#!/bin/bash
-            python3 -m venv venv
-            source venv/bin/activate
-            pip install --upgrade pip
-            pip install -r python-app/requirements.txt
-            '''
-                }
-            }
-                
-
-            stage('Test') {
-                steps{
-                    sh'''#!/bin/bash
-            source venv/bin/activate
-            python3 tests/test.py
-            '''
-                }
-            }
-
-            stage('Build') {
-                steps{
-                    sh'''#!/bin/bash
-            source venv/bin/activate
-            python3 python-app/app.py
-            '''
-                }
-            }
-                
-        }
+pipeline {
+    agent {
+        docker { image 'python:3.10' }
     }
 
+    enviroment {
+        APP_DIR = "CI-CD/Jenkins/automate-nightly-backup/python-app"
+    }
 
+    stages{
+            
+        stage('Install dependincies') {
+            steps{
+                dir(APP_DIR){
+                    sh '''#!/bin/bash
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r python-app/requirements.txt
+                    '''
+                }
+           
+            }
+        }
+            
+
+        stage('Test') {
+            steps{
+                dir(APP_DIR){
+                    sh'''#!/bin/bash
+                    source venv/bin/activate
+                    python3 tests/test.py
+                    '''
+                } 
+            }
+        }
+
+        stage('Build') {
+            steps{
+                 dir(APP_DIR){
+                        sh'''#!/bin/bash
+                        source venv/bin/activate
+                        python3 python-app/app.py
+                        '''
+                 }
+            }
+        }
+            
+    }
 }
+
 
