@@ -41,8 +41,15 @@ pipeline {
                         sh'''#!/bin/bash
                         source venv/bin/activate
                         python3 app.py
+                        tar -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
                         '''
                  }
+            }
+        }
+
+        stage('Trigger Nighlty Backup'){
+            steps {
+                build job: 'backup', wait: false
             }
         }
             
