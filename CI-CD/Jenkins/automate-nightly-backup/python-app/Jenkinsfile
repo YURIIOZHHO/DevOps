@@ -40,8 +40,10 @@ pipeline {
                  dir(APP_DIR){
                         sh'''#!/bin/bash
                         source venv/bin/activate
-                        python3 app.py
-                        tar -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
+                        python3 app.py &
+                        PID=$!
+                        wait $PID
+                        tar -czf build-$(date +%Y$m%d-%H%M%S).tar.gz 
                         '''
                  }
             }
