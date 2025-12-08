@@ -19,7 +19,7 @@ pipeline {
 
         stage('Backup build to S3') {
             steps {
-                dir(APP_DIR + "/artifacts") {
+                dir(APP_DIR) {
                     script {
                         docker.image('amazon/aws-cli:latest').inside('--entrypoint=""') {
                             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
