@@ -1,19 +1,26 @@
-pipeline{
+pipeline {
     agent any
 
     environment {
-        APP_DIR = "CI-CD/Jenkins/automate-nightly-backup/python-app/artifacts/"
+        APP_DIR = "python-app/artifacts"
     }
 
-    stages{
-        stage('Backup build to S3'){
-            steps{
-                dir(APP_DIR){
+    stages {
+        stage('Backup build to S3') {
+            steps {
+                dir(APP_DIR) {
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
                         sh '''#!/bin/bash
-                            LATEST_BUILD=$(ls -t *.tar.gz | head -1)
+                            pip install awscli --upgrade --user
+                            export PATH=$HOME/.local/bin:$PATH
                             
-                            aws s3 cp $LATEST_BUILD s3://python-app-nightly-backup/python-project/
+                            LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
+                            if [ -z "$LATEST_BUILD" ]; then
+                                echo "No build files found!"
+                                exit 1
+                            fi
+                            
+                            aws s3 cp "$LATEST_BUILD" s3://python-app-nightly-backup/python-project/
                         '''
                     }
                 }
