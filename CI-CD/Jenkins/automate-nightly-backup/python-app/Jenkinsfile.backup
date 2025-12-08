@@ -19,23 +19,18 @@ pipeline {
 
         stage('Backup build to S3') {
             steps {
-                dir(APP_DIR) {
+                dir(APP_DIR + "/artifacts") {
                     script {
-                        docker.image('amazon/aws-cli:latest').inside {
+                        docker.image('amazon/aws-cli:latest').inside('--entrypoint=""') {
                             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
-                                sh '''#!/bin/bash
+                                sh '''
                                 LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
-
-                                tar -tzf "$LATEST_BUILD"
-
                                 if [ -z "$LATEST_BUILD" ]; then
-                                    echo "❌ ERROR: No build files found in $APP_DIR. Stopping backup."
+                                    echo "❌ No build files found"
                                     exit 1
                                 fi
-
-                                echo "✅ Found latest build: $LATEST_BUILD. Uploading to $S3_BUCKET_PATH"
-                                aws s3 cp "$LATEST_BUILD" "${S3_BUCKET_PATH}" --acl public-read
-                                echo "✅ Backup completed successfully."
+                                echo "✅ Uploading $LATEST_BUILD to S3"
+                                aws s3 cp "$LATEST_BUILD" "$S3_BUCKET_PATH" --acl public-read
                                 '''
                             }
                         }
@@ -43,5 +38,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
