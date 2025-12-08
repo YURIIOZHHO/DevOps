@@ -9,25 +9,24 @@ pipeline {
         stage('Backup build to S3') {
             steps {
                 dir(APP_DIR) {
-                    docker.image('amazon/aws-cli:latest').inside {
-                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
-                            sh '''
-                                LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
+                    script {
+                        docker.image('amazon/aws-cli:latest').inside {
+                            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+                                sh '''
+                                    LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
 
-                                if [ -z "$LATEST_BUILD" ]; then
-                                    echo "❌ ERROR: No build files found in $APP_DIR. Stopping backup."
-                                    exit 1
-                                fi
+                                    if [ -z "$LATEST_BUILD" ]; then
+                                        echo "❌ ERROR: No build files found in $APP_DIR. Stopping backup."
+                                        exit 1
+                                    fi
 
-                                echo "✅ Found latest build: $LATEST_BUILD. Uploading to $S3_BUCKET_PATH"
-                                
-                                # Команда S3 CP
-                                # $AWS_ACCESS_KEY_ID та $AWS_SECRET_ACCESS_KEY автоматично 
-                                # встановлюються завдяки withCredentials
-                                aws s3 cp "$LATEST_BUILD" "${S3_BUCKET_PATH}" --acl public-read
+                                    echo "✅ Found latest build: $LATEST_BUILD. Uploading to $S3_BUCKET_PATH"
+                                    
+                                    aws s3 cp "$LATEST_BUILD" "${S3_BUCKET_PATH}" --acl public-read
 
-                                echo "✅ Backup completed successfully."
-                            '''
+                                    echo "✅ Backup completed successfully."
+                                '''
+                            }
                         }
                     }
                 }
