@@ -26,6 +26,8 @@ pipeline {
                                 sh '''#!/bin/bash
                                 LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
 
+                                tar -tzf "$LATEST_BUILD"
+
                                 if [ -z "$LATEST_BUILD" ]; then
                                     echo "❌ ERROR: No build files found in $APP_DIR. Stopping backup."
                                     exit 1
