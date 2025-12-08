@@ -5,68 +5,67 @@ pipeline {
 
     environment {
         APP_DIR = "CI-CD/Jenkins/automate-nightly-backup/python-app"
+        ARTIFACT_DIR = "artifacts"
     }
 
-    stages{
-            
-        stage('Install dependincies') {
-            steps{
-                dir(APP_DIR){
+    stages {
+        stage('Install dependencies') {
+            steps {
+                dir(APP_DIR) {
                     sh '''#!/bin/bash
                     python3 -m venv venv
-                    source venv/bin/activate
-                    pip install --upgrade pip
-                    pip install -r requirements.txt
+                    venv/bin/pip install --upgrade pip
+                    venv/bin/pip install -r requirements.txt
                     '''
                 }
-           
             }
         }
-            
 
         stage('Test') {
-            steps{
-                dir(APP_DIR){
-                    sh'''#!/bin/bash
-                    source venv/bin/activate
-                    python3 tests/test.py
+            steps {
+                dir(APP_DIR) {
+                    sh '''#!/bin/bash
+                    venv/bin/python tests/test.py
                     '''
-                } 
+                }
             }
         }
 
         stage('Build') {
-            steps{
-                 dir(APP_DIR){
-                        sh'''#!/bin/bash
-                        source venv/bin/activate
-                        python3 app.py
-                        '''
-                 }
+            steps {
+                dir(APP_DIR) {
+                    sh '''#!/bin/bash
+                    # Перевірка app.py без запуску сервера
+                    venv/bin/python -m py_compile app.py
+                    '''
+                }
             }
         }
 
-         stage('Archive') {
-            steps{
-                 dir(APP_DIR){
-                        sh'''#!/bin/bash
-                        mkdir -p artifacts
-                        cp -r python-app/* artifacts/
-                        tar -czf build-$(date +%Y%m%d-%H%M%S).tar.gz -C artifacts .
-                        '''
-                 }
+        stage('Archive') {
+            steps {
+                dir(APP_DIR) {
+                    sh '''#!/bin/bash
+                    mkdir -p $ARTIFACT_DIR
+                    cp -r * $ARTIFACT_DIR/
+                    tar -czf build-$(date +%Y%m%d-%H%M%S).tar.gz -C $ARTIFACT_DIR .
+                    '''
+                }
             }
         }
 
-        
+        stage('Archive Artifacts') {
+            steps {
+                dir(APP_DIR) {
+                    archiveArtifacts artifacts: 'artifacts/*.tar.gz', fingerprint: true
+                }
+            }
+        }
 
-        stage('Trigger Nighlty Backup'){
+        stage('Trigger Nightly Backup') {
             steps {
                 build job: 'backup', wait: false
             }
         }
-            
     }
 }
-
-
