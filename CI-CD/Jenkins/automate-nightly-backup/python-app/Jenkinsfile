@@ -50,7 +50,9 @@ pipeline {
             steps{
                  dir(APP_DIR){
                         sh'''#!/bin/bash
-                        tar --exclude='build-*.tar.gz' -czf build-$(date +%Y$m%d-%H%M%S).tar.gz .
+                        mkdir -p artifacts
+                        cp -r python-app/* artifacts/
+                        tar -czf build-$(date +%Y%m%d-%H%M%S).tar.gz -C artifacts .
                         '''
                  }
             }
