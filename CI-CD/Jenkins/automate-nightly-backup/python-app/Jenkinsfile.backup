@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-        APP_DIR = "CI-CD/Jenkins/automate-nightly-backup/python-app"
+        APP_DIR = "CI-CD/Jenkins/automate-nightly-backup/python-app/artifacts/"
     }
 
     stages{
