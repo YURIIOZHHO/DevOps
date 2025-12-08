@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Отримуємо артефакти з останнього успішного build job
                 copyArtifacts(
-                    projectName: 'build-job-name',  // замініть на реальну назву Pipeline 1
+                    projectName: 'python',  // замініть на реальну назву Pipeline 1
                     filter: 'artifacts/*.tar.gz',
                     selector: lastSuccessful()
                 )
