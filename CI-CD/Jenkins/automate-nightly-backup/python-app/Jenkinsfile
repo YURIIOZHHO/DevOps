@@ -48,13 +48,13 @@ pipeline {
                     sh '''#!/bin/bash
                     mkdir -p $ARTIFACT_DIR
                     cp -r * $ARTIFACT_DIR/
-                    tar -czf build-$(date +%Y%m%d-%H%M%S).tar.gz -C $ARTIFACT_DIR .
+                    tar -czf build-$(date +%Y%m%d-%H%M%S).tar.gz -C $ARTIFACT_DIR app.py data/ output/ tests/ config.yaml Jenkinsfile Jenkinsfile.backup logs/ requirements.txt
                     '''
                 }
             }
         }
 
-        stage('Archive Artifacts') {
+        stage('Archive Artifacts'){
             steps {
                 dir(APP_DIR) {
                     archiveArtifacts artifacts: 'artifacts/*.tar.gz', fingerprint: true
