@@ -1,0 +1,45 @@
+name: base github-action
+on: push
+jobs:
+  first-job-with-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: add code
+      uses: actions/checkout@v4
+
+    - name: install node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+      
+    - name: install dependecies
+      run: npm ci
+
+    - name: start test
+      run: npm test
+
+  second-job-with-deploy:
+    needs: first-job-with-test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: to deploy code on server
+      uses: actions/checkout@v4
+
+    - name: to intall node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    
+    - name: install dependencies
+      run: npm ci
+    
+    - name: deploy on server
+      run: echo "Deploy on server..."
+  
+      
+
+
+    
+      
