@@ -30,7 +30,7 @@ pipeline {
                                     exit 1
                                 fi
                                 echo "✅ Uploading $LATEST_BUILD to S3"
-                                aws s3 cp "$LATEST_BUILD" "$S3_BUCKET_PATH" --acl public-read
+                                aws s3 cp "$LATEST_BUILD" "$S3_BUCKET_PATH"
                                 '''
                             }
                         }
