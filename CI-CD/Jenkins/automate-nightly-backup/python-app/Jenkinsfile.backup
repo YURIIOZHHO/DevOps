@@ -1,27 +1,34 @@
 pipeline {
-    agent any
-
+    agent any 
     environment {
         APP_DIR = "python-app/artifacts"
+        S3_BUCKET_PATH = "s3://python-app-nightly-backup/python-project/"
     }
 
     stages {
         stage('Backup build to S3') {
             steps {
                 dir(APP_DIR) {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
-                        sh '''#!/bin/bash
-                            pip install awscli --upgrade --user
-                            export PATH=$HOME/.local/bin:$PATH
-                            
-                            LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
-                            if [ -z "$LATEST_BUILD" ]; then
-                                echo "No build files found!"
-                                exit 1
-                            fi
-                            
-                            aws s3 cp "$LATEST_BUILD" s3://python-app-nightly-backup/python-project/
-                        '''
+                    docker.image('amazon/aws-cli:latest').inside {
+                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+                            sh '''
+                                LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
+
+                                if [ -z "$LATEST_BUILD" ]; then
+                                    echo "❌ ERROR: No build files found in $APP_DIR. Stopping backup."
+                                    exit 1
+                                fi
+
+                                echo "✅ Found latest build: $LATEST_BUILD. Uploading to $S3_BUCKET_PATH"
+                                
+                                # Команда S3 CP
+                                # $AWS_ACCESS_KEY_ID та $AWS_SECRET_ACCESS_KEY автоматично 
+                                # встановлюються завдяки withCredentials
+                                aws s3 cp "$LATEST_BUILD" "${S3_BUCKET_PATH}" --acl public-read
+
+                                echo "✅ Backup completed successfully."
+                            '''
+                        }
                     }
                 }
             }
