@@ -78,10 +78,10 @@ playbok.yaml:
         chdir: /home/ec2-user/docker
 ```
 
-Result on Ansible master:
+Result on Ansible master: 
 !["Task performed successfully"](https://github.com/user-attachments/assets/015d98b1-6bd3-4595-8be0-96d8bc2752e5)
 
-Result on Ansible slave:
+Result on Ansible slave: 
 !["Result of the performed task"](https://github.com/user-attachments/assets/dc4231d9-bffe-46c5-922b-fda21b68010c)
 
 
