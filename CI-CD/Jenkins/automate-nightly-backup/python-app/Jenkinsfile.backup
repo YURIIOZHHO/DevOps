@@ -8,9 +8,8 @@ pipeline {
     stages {
         stage('Retrieve Latest Build') {
             steps {
-                // Отримуємо артефакти з останнього успішного build job
                 copyArtifacts(
-                    projectName: 'python',  // замініть на реальну назву Pipeline 1
+                    projectName: 'python',
                     filter: 'artifacts/*.tar.gz',
                     selector: lastSuccessful()
                 )
@@ -26,10 +25,10 @@ pipeline {
                                 sh '''
                                 LATEST_BUILD=$(ls -t *.tar.gz 2>/dev/null | head -1)
                                 if [ -z "$LATEST_BUILD" ]; then
-                                    echo "❌ No build files found"
+                                    echo " No build files found"
                                     exit 1
                                 fi
-                                echo "✅ Uploading $LATEST_BUILD to S3"
+                                echo "Uploading $LATEST_BUILD to S3"
                                 aws s3 cp "$LATEST_BUILD" "$S3_BUCKET_PATH"
                                 '''
                             }
